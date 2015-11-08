@@ -13,7 +13,7 @@ class CreateGeoTable extends Migration
     public function up()
     {
         Schema::create('geos', function(Blueprint $table) {
-            $table->bigInteger('id')->unique();
+            $table->increments('id');
             // google usually returns either 6 or 7 decimal places
             /*
             +----------------+-------------+
@@ -28,6 +28,8 @@ class CreateGeoTable extends Migration
             $table->decimal('lat', 9, 7);
             // Longitude measurements range from 0° to (+/-)180°
             $table->decimal('lon', 10, 7);
+            // pub id
+            $table->integer('pub_id')->unique();
             // example: Decimal(10,7) = ###.#######
             $table->timestamps();
         });
