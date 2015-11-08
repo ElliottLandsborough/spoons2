@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
         \App\Console\Commands\jsonToDb::class,
         \App\Console\Commands\downloadJson::class,
         \App\Console\Commands\geoCodeProperties::class,
+        \App\Console\Commands\sendGeoToElasticSearch::class,
     ];
 
     /**
