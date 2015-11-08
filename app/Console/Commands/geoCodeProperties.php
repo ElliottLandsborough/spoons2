@@ -33,15 +33,18 @@ class geoCodeProperties extends Command
     {
         $pubs = Pub::get();
         
-        $this->info('Indexing properties...');
+        $this->info('Indexing pubs...');
 
         $bar = $this->output->createProgressBar(count($pubs));
 
         foreach ($pubs as $pub) {
-            $pub->geoCode();
             $bar->advance();
-            // sleep for 0.333 seconds
-            usleep(333333);
+            // only query api if the pub has no coordinates
+            if (!$pub->geo) {
+                $pub->geoCode();
+                // sleep for 0.333 seconds
+                usleep(333333);
+            }
         }
 
         $bar->finish();
