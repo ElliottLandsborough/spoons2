@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use File;
 use Config;
 
+use Toin0u\Geocoder\Facade\Geocoder;
+
 class Pub extends Model {
 
 	//use SoftDeletes;
@@ -22,7 +24,7 @@ class Pub extends Model {
 	}
 
 	public function geo() {
-		return $this->belongsTo('App\Geo');
+		return $this->HasOne('App\Geo');
 	}
 
 	// take the spoons json and import it to the db
@@ -83,8 +85,9 @@ class Pub extends Model {
 	}
 
 	// format the address for geocode search
-    public static function formatAddress($pub)
+    public function formatAddress()
     {
+    	$pub = $this;
         $address = array();
         $pub->county = $pub->county->name;
         $keys = array('name', 'address_line_1', 'address_line_2', 'town', 'county', 'post_code');
@@ -95,30 +98,31 @@ class Pub extends Model {
                 }
             }
             if (count($address)) {
-                return implode($address, ', ');
+            	$pub->fullAddress = implode($address, ', ');
             }
         }
-        return false;
+        return $pub;
     }
 
     // geocode search by string
-    public static function geoCode($string)
+    public function geoCode()
     {
+    	$string = $this->formatAddress()->fullAddress;
         try {
             $geocode = Geocoder::geocode($string);
-            // The GoogleMapsProvider will return a result
-            return $geocode;
+            if ($geocode) {
+            	$geo = new Geo(['lat'=>$geocode->getLatitude(), 'lon'=>$geocode->getLongitude()]);
+            	$this->geo()->save($geo);
+            }
         } catch (\Exception $e) {
-            // No exception will be thrown here
-            echo $e->getMessage();
+            // Exception will be thrown here
+            die($e->getMessage());
         }
+        return $this;
     }
 
     static public function getLatLon() {
-		$pub = Pub::where('id', 2)->with('county')->first();
-		$query = Pub::formatAddress($pub);
-		Pub::geoCode();
-		print_r($pub->toArray());
+
 	}
 
 }

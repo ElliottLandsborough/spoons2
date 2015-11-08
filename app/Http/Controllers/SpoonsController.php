@@ -11,7 +11,7 @@ class SpoonsController extends Controller
 {
 
 	public function test() {
-		Pub::getLatLon();
+
 	}
 
 }

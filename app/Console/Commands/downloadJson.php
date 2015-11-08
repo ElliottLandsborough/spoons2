@@ -8,21 +8,21 @@ use Illuminate\Foundation\Inspiring;
 use App\Pub;
 use File;
 
-class jsonToDb extends Command
+class downloadJson extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'jsonToDb';
+    protected $signature = 'downloadJson';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Parse the spoons json into the database';
+    protected $description = 'Download the json file from the spoons website';
 
     /**
      * Execute the console command.
@@ -31,10 +31,6 @@ class jsonToDb extends Command
      */
     public function handle()
     {
-        if ($file = Pub::getLatestJsonFileName()) {
-            if ($json = File::get($file)) {
-                Pub::jsonToDb($json, true);
-            }
-        }
+        Pub::getSpoonsJson();
     }
 }
