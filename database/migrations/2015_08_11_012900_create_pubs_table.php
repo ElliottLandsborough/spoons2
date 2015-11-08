@@ -13,7 +13,7 @@ class CreatePubsTable extends Migration
     public function up()
     {
         Schema::create('pubs', function (Blueprint $table) {
-            $table->bigInteger('id')->unique();
+            $table->integer('id')->unique();
             $table->decimal('xmas_lunch', 10, 2);
             $table->decimal('xmas_price', 10, 2);
             $table->text('name');
