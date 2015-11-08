@@ -4,11 +4,19 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories":
+    [
+            {
+                "type": "vcs",
+                "url": "https://github.com/ElliottLandsborough/php-googleplaces"
+            }
+    ],
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
         "toin0u/geocoder-laravel": "^0.6.0",
-        "ruflin/elastica": "^2.3"
+        "ruflin/elastica": "^2.3",
+        "joshtronic/php-googleplaces": "dev-master"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

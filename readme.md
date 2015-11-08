@@ -20,6 +20,8 @@ INSERT INTO `spoons`.`geos` (`id`, `lat`, `lon`, `pub_id`, `created_at`, `update
 INSERT INTO `spoons`.`geos` (`id`, `lat`, `lon`, `pub_id`, `created_at`, `updated_at`) VALUES (NULL, '51.2100664', '-4.119179', '939', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `spoons`.`geos` (`id`, `lat`, `lon`, `pub_id`, `created_at`, `updated_at`) VALUES (NULL, '55.9429719', '-4.5719597', '960', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 ```
+# Get places API IDs - and possibly more accurate latlon
+```php artisan placesApiProperties```
 # Add elasticsearch params (using searchly atm)
 ```searchlyApi=b8adddddddddddddd3852f47d22a5```
 ```searchlyDomain=xxx-yyy-zzz.searchly.com```

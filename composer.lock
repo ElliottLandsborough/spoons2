@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "69926f60c44a38d3329c0ed6070e1728",
-    "content-hash": "49af859ee5daad14ab5aead28e56010a",
+    "hash": "8f5c869301d9824029105d47ce9466fa",
+    "content-hash": "296e9b143e0ab053b94a351e9b8a31dd",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -361,6 +361,54 @@
                 "tokenizer"
             ],
             "time": "2015-03-11 20:06:43"
+        },
+        {
+            "name": "joshtronic/php-googleplaces",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ElliottLandsborough/php-googleplaces.git",
+                "reference": "e6279e12178ee1aef43ba1dc17322d49b54c3325"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ElliottLandsborough/php-googleplaces/zipball/e6279e12178ee1aef43ba1dc17322d49b54c3325",
+                "reference": "e6279e12178ee1aef43ba1dc17322d49b54c3325",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "joshtronic\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josh Sherman",
+                    "email": "josh@gravityblvd.com",
+                    "homepage": "http://joshtronic.com"
+                }
+            ],
+            "description": "PHP Wrapper for the Google Places API",
+            "homepage": "https://github.com/joshtronic/php-googleplaces",
+            "keywords": [
+                "api",
+                "google",
+                "places"
+            ],
+            "support": {
+                "source": "https://github.com/ElliottLandsborough/php-googleplaces/tree/master"
+            },
+            "time": "2015-10-23 15:21:07"
         },
         {
             "name": "laravel/framework",
@@ -3123,7 +3171,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "joshtronic/php-googleplaces": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
