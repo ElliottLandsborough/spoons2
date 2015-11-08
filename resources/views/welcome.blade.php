@@ -1,17 +1,18 @@
-<html>
+<!doctype html>
+<html ng-app="project">
   <head>
-    <title>Angular 2 QuickStart</title>
-    <script src="https://code.angularjs.org/tools/system.js"></script>
-    <script src="https://code.angularjs.org/tools/typescript.js"></script>
-    <script src="https://code.angularjs.org/2.0.0-alpha.45/angular2.dev.js"></script>
-    <script>
-        System.config({
-            packages: {'app': {defaultExtension: 'js'}}
-        });
-        System.import('js/angular/app');
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js">
     </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js">
+   </script>
+    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="project.js"></script>
   </head>
   <body>
-    <my-app>loading...</my-app>
+    <h2>JavaScript Projects</h2>
+    <div ng-view></div>
   </body>
 </html>
