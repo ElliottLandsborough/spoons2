@@ -91,6 +91,7 @@ class Pub extends Model {
         $address = array();
         $pub->county = $pub->county->name;
         $keys = array('name', 'address_line_1', 'address_line_2', 'town', 'county', 'post_code');
+        //$keys = array('name', 'town', 'post_code');
         if (is_object($pub)) {
             foreach ($keys as $key) {
                 if (strlen($pub->{$key})) {
@@ -115,14 +116,11 @@ class Pub extends Model {
             	$this->geo()->save($geo);
             }
         } catch (\Exception $e) {
+        	echo 'Pub ID: ' . $this->id.PHP_EOL;
             // Exception will be thrown here
             die($e->getMessage());
         }
         return $this;
     }
-
-    static public function getLatLon() {
-
-	}
 
 }
