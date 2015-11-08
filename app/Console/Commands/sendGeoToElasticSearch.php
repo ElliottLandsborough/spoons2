@@ -44,12 +44,32 @@ class sendGeoToElasticSearch extends Command
         }
         // Get type
         $elasticaType = $elasticaIndex->getType('pub');
+        // set mapping
+        $mapping = new \Elastica\Type\Mapping();
+        $mapping->setType($elasticaType);
+        //$mapping->setParam('index_analyzer', 'indexAnalyzer');
+        //$mapping->setParam('search_analyzer', 'searchAnalyzer');
+        $mapping->setProperties(array(
+            'id'      => array('type' => 'integer', 'include_in_all' => TRUE),
+            'pub_id'      => array('type' => 'integer', 'include_in_all' => TRUE),
+            'location'=> array('type' => 'geo_point', 'include_in_all' => TRUE),
+        ));
+        // Send mapping to type
+        $mapping->send();
+        // get all geos and index
         $geos = Geo::get();
         $this->info('Building coordinates array...');
         $bar = $this->output->createProgressBar(count($geos));
         $documents = array();
         foreach ($geos as $geo) { 
-            $documents[] = new \Elastica\Document($geo->id,$geo);
+            $item = array(
+                'pub_id' => $geo->pub_id,
+                'location' => array(
+                    'lat' => $geo->lat,
+                    'lon' => $geo->lon
+                )
+            );
+            $documents[] = new \Elastica\Document($geo->id, $item);
             $bar->advance();
         }
         $bar->finish();
