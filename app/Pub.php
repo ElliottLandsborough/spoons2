@@ -123,4 +123,66 @@ class Pub extends Model {
         return $this;
     }
 
+    /**
+	 * Calculates the great-circle distance between two points, with
+	 * the Vincenty formula.
+	 * @param float $latitudeFrom Latitude of start point in [deg decimal]
+	 * @param float $longitudeFrom Longitude of start point in [deg decimal]
+	 * @param float $latitudeTo Latitude of target point in [deg decimal]
+	 * @param float $longitudeTo Longitude of target point in [deg decimal]
+	 * @param float $earthRadius Mean earth radius in [m]
+	 * @return float Distance between points in [m] (same as earthRadius)
+	 */
+	public static function vincentyGreatCircleDistance(
+  		$latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo, $earthRadius = 6371000)
+		{
+		  	// convert from degrees to radians
+			$latFrom = deg2rad($latitudeFrom);
+		  	$lonFrom = deg2rad($longitudeFrom);
+		  	$latTo = deg2rad($latitudeTo);
+		  	$lonTo = deg2rad($longitudeTo);
+
+		  	$lonDelta = $lonTo - $lonFrom;
+		  	$a = pow(cos($latTo) * sin($lonDelta), 2) +
+		    pow(cos($latFrom) * sin($latTo) - sin($latFrom) * cos($latTo) * cos($lonDelta), 2);
+		  	$b = sin($latFrom) * sin($latTo) + cos($latFrom) * cos($latTo) * cos($lonDelta);
+
+		  	$angle = atan2(sqrt($a), $b);
+		  	return $angle * $earthRadius;
+		}
+
+    public function placesApiSearch()
+    {
+    	$string = 'wetherspoon';
+    	// if this pub even has geo?
+    	if ($this->geo && $this->geo->lat && $this->geo->lon) {
+	    	$google_places = new \joshtronic\GooglePlaces(Config::get('spoons.googleApi'));
+	    	//$google_places->rankby   = 'prominence';
+			$google_places->location = array($this->geo->lat, $this->geo->lon);
+			$google_places->radius   = 100;
+			$google_places->query      = $string;
+			try {
+				$results = $google_places->textSearch();
+				$pubsByDistance = array();
+				foreach ($results['results'] as $pub) {
+					$distance = Self::vincentyGreatCircleDistance($this->geo->lat, $this->geo->lon, $pub['geometry']['location']['lat'], $pub['geometry']['location']['lng']);
+					$pubsByDistance[$distance] = $pub;
+				}
+				if (count($pubsByDistance)) {
+					ksort($pubsByDistance);
+					$pub = array_values($pubsByDistance)[0];
+					$this->geo->place_id  = $pub['id'];
+					$this->geo->lat_precice = $pub['geometry']['location']['lat'];
+					$this->geo->lon_precice = $pub['geometry']['location']['lng'];
+					$this->geo->save();
+				}
+				
+			} catch (\Exception $e) {
+				// no results found
+				//echo $e->getMessage();
+			}
+		}
+		return $this;
+    }
+
 }

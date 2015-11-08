@@ -12,7 +12,7 @@ class Geo extends Model {
 	protected $table = 'geos';
 	public $timestamps = true;
 
-	protected $fillable = array('lat', 'lon', 'pub_id');
+	protected $fillable = array('lat', 'lon', 'pub_id', 'place_id', 'lat_precice', 'lon_precice');
 
 
 
