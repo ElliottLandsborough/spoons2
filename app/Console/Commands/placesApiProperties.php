@@ -41,8 +41,8 @@ class placesApiProperties extends Command
             // only query api if the pub has no coordinates
             //if (!$pub->geo) {
                 $pub->placesApiSearch();
-                // sleep for 0.333 seconds
-                usleep(333333);
+                // sleep for 0.999999 seconds
+                usleep(999999);
             //}
         }
 
