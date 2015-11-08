@@ -11,4 +11,4 @@
 |
 */
 
-Route::any('/', 'SpoonsController@test');
+Route::any('/', 'SpoonsController@home');
