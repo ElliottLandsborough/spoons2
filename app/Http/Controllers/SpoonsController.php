@@ -10,7 +10,9 @@ use App\Pub;
 class SpoonsController extends Controller
 {
 
-	public function test() {
+	public function home() {
+
+		return view('welcome');
 
 	}
 
