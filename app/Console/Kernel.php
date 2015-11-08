@@ -15,6 +15,8 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         \App\Console\Commands\Inspire::class,
         \App\Console\Commands\jsonToDb::class,
+        \App\Console\Commands\downloadJson::class,
+        \App\Console\Commands\geoCodeProperties::class,
     ];
 
     /**
