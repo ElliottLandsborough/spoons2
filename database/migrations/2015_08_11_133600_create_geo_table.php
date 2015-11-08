@@ -30,7 +30,11 @@ class CreateGeoTable extends Migration
             $table->decimal('lon', 10, 7);
             // pub id
             $table->integer('pub_id')->unique();
-            // example: Decimal(10,7) = ###.#######
+            // google places id
+            $table->text('place_id')->nullable();
+            // prcise lat/lon
+            $table->text('lat_precice')->nullable();
+            $table->text('lon_precice')->nullable();
             $table->timestamps();
         });
     }
