@@ -11,4 +11,25 @@
 |
 */
 
-Route::any('/', 'SpoonsController@home');
+// load angular
+Route::get('/', 'SpoonsController@home');
+
+Route::group(array('prefix' => 'api'), function() {
+
+	// get array of pubs
+	Route::post('latlon', 'SpoonsController@pubsByLatLon');
+	Route::post('string', 'SpoonsController@pubsByString');
+
+	Route::group(array('prefix' => 'admin'), function() {
+
+		// todo: block anyone but admin from going here
+		Route::post('diff', 'SpoonsController@pubsByString');
+		Route::post('delete', 'SpoonsController@deletePubById');
+		Route::post('add', 'SpoonsController@addPubById');
+		Route::post('update', 'SpoonsController@updatePubById');
+		Route::post('updateGeo', 'SpoonsController@updateGeoById');
+		Route::post('updatePlace', 'SpoonsController@updateGeoById');
+
+	});
+
+});
