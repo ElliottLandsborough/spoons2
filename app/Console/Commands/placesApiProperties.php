@@ -37,13 +37,13 @@ class placesApiProperties extends Command
         $bar = $this->output->createProgressBar(count($pubs));
 
         foreach ($pubs as $pub) {
-            $bar->advance();
             // only query api if the pub has no coordinates
-            //if (!$pub->geo) {
+            if ($pub->geo && !strlen($pub->geo->place_id)) {
                 $pub->placesApiSearch();
                 // sleep for 0.999999 seconds
                 usleep(999999);
-            //}
+            }
+            $bar->advance();
         }
 
         $bar->finish();
