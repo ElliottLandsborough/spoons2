@@ -13,4 +13,11 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss');
+
+    // Application Scripts
+    mix.scripts([
+        'app.js',
+        'controllers/mainCtrl.js',
+        'services/commentService.js',
+    ]);
 });

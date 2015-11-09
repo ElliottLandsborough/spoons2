@@ -1,18 +1,13 @@
 <!doctype html>
-<html ng-app="project">
+<html ng-app="commentApp">
   <head>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-resource.min.js">
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular-route.min.js">
-   </script>
-    <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-    <link rel="stylesheet" href="bootstrap.css">
-    <script src="project.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-resource.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script type="text/javascript" src="/js/all.js"></script>
   </head>
   <body>
-    <h2>JavaScript Projects</h2>
-    <div ng-view></div>
+
   </body>
 </html>
