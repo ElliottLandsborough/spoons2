@@ -1,0 +1,22 @@
+{
+  "name": "spoons",
+  "description": "Wetherspoons Locator",
+  "main": "",
+  "authors": [
+    "Elliott Landsborough <elliott.landsborough@gmail.com>"
+  ],
+  "license": "MIT",
+  "moduleType": [],
+  "homepage": "http://spoons.pub",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs-geolocation": "~0.1.1"
+  }
+}
