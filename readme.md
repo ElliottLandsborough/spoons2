@@ -76,6 +76,9 @@ npm install --global gulp
 ```
 npm install
 ```
+```
+bower install
+```
 
 # ToDo
  - Admin panel to reindex edited pubs
