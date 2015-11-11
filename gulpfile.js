@@ -16,8 +16,13 @@ elixir(function(mix) {
 
     // Application Scripts
     mix.scripts([
-        'app.js',
-        'controllers/mainCtrl.js',
-        'services/commentService.js',
+    	// packages
+    	'./bower_components/angularjs-geolocation/src/geolocation.js',
+    	// site
+        'app.module.js',
+        'app.routes.js',
+        'components/**/*.js',
+        'components/**/*.js',
     ]);
+
 });
