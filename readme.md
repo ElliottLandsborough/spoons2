@@ -85,3 +85,12 @@ bower install
  - Deleted pubs detection
  - Some kind of cron with email
  - Learn Angular
+
+# new stuff
+
+https://www.jdwetherspoon.com/api/pubs
+
+{"location":{"lng":-0.07475060000001577,"lat":51.590117},"paging":{"numberPerPage":3,"page":1}}
+{"location":{"lng":-0.07475060000001577,"lat":51.590117},"paging":{"numberPerPage":1000,"page":1}}
+{"paging":{"numberPerPage":90000,"page":1}}
+
