@@ -94,3 +94,7 @@ https://www.jdwetherspoon.com/api/pubs
 {"location":{"lng":-0.07475060000001577,"lat":51.590117},"paging":{"numberPerPage":1000,"page":1}}
 {"paging":{"numberPerPage":90000,"page":1}}
 
+https://www.jdwetherspoon.com/api/advancedsearch
+
+{"region":null,"paging":{"UsePagination":false},"facilities":[],"searchType":0}
+{"term":"hitchin","region":null,"location":{"lng":-0.2834139999999934,"lat":51.94921},"paging":{"numberPerPage":30,"page":0,"UsePagination":true},"facilities":[],"searchType":0}
